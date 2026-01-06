@@ -16,7 +16,8 @@ A modern and high-performance Android application built with **Kotlin** and **Je
 
 * **Language**: `Kotlin`
 * **IDE**: `Android Studio`
-* **UI**: `Jetpack Compose (Material 3) ` 
+* **UI**: `Jetpack Compose (Material 3) `
+* **Build System**: `Gradle (Kotlin DSL) `
 * **Concurrency**: `Kotlin Coroutines` for the timer loop  
 * **Animation**: `Compose Animation API` & `Custom Canvas Drawing`
 
