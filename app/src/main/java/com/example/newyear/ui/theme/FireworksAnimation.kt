@@ -14,13 +14,12 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
 
-// A single particle in our firework explosion
 private data class Particle(
-    var x: Float, var y: Float, // Position
-    var vx: Float, var vy: Float, // Velocity
-    var alpha: Float, // Transparency
-    val color: Color, // Color
-    val size: Float // Size
+    var x: Float, var y: Float,
+    var vx: Float, var vy: Float,
+    var alpha: Float,
+    val color: Color,
+    val size: Float
 )
 
 @Composable
@@ -36,28 +35,24 @@ fun FireworksAnimation(
         Color(0xFFFFCC00), Color(0xFFAF52DE), Color.White
     )
 
-    // The animation engine. It runs in a side-effect and updates the particle state.
     LaunchedEffect(canvasSize) {
         if (canvasSize == IntSize.Zero) return@LaunchedEffect
 
         var lastFrameTime = 0L
         while (isActive) {
-            // Wait for the next frame.
             withFrameNanos { frameTime ->
                 if (lastFrameTime == 0L) {
                     lastFrameTime = frameTime
                 }
-                // Delta time ensures animation is smooth regardless of frame rate.
                 val delta = (frameTime - lastFrameTime) / 1_000_000_000f
                 lastFrameTime = frameTime
 
-                // 1. Spawn new fireworks randomly
                 if (random.nextFloat() < 0.05f) {
                     val cx = random.nextFloat() * canvasSize.width
                     val cy = random.nextFloat() * canvasSize.height * 0.7f
                     val baseColor = colors.random()
 
-                    repeat(100) { // 100 particles per explosion
+                    repeat(100) {
                         val angle = random.nextFloat() * 2 * PI.toFloat()
                         val speed = random.nextFloat() * 400f + 100f
                         particles.add(
@@ -73,17 +68,16 @@ fun FireworksAnimation(
                     }
                 }
 
-                // 2. Update and remove dead particles
                 val iterator = particles.iterator()
                 while (iterator.hasNext()) {
                     val p = iterator.next()
                     p.x += p.vx * delta
                     p.y += p.vy * delta
-                    p.vy += 300f * delta // Apply gravity
-                    p.alpha -= 0.8f * delta // Fade out
+                    p.vy += 300f * delta
+                    p.alpha -= 0.8f * delta
 
                     if (p.alpha <= 0f) {
-                        iterator.remove() // Remove particle when it's no longer visible
+                        iterator.remove()
                     }
                 }
             }
