@@ -42,38 +42,15 @@ com.example.newyear
 │       └── CountdownScreen.kt      # Main UI layout  
 └── MainActivity.kt                 # Entry point & theme state management
 ```
-
-### **🚀 Getting Started**
-
-#### **Prerequisites**
-
-* `Android Studio Ladybug | 2024.2.1 or newer.`  
-* `JDK 17+`
-* `Android SDK 34+`
-
-#### **Installation**
-
-1. Clone the repository:
-   ```
-   git clone github.com/arkaceananda/NewYearCountdown
-   ```
-
-3. Open the project in **Android Studio**.  
-4. Let Gradle sync and build the project.  
-5. Run the app on an emulator or physical device.
-
-### **🧪 Testing the Celebration**
-
-To see the fireworks and the "Happy New Year" message immediately, you can modify the ``getTargetTime`` function in ``CountdownCalculator.kt``:
+---
+## Screenshots
+| Dark Mode | Light Mode | New Year (Dark) | New Year (Light) |
+|---------------------|-------------------|-------------------| ------------------- |
+| <img width="240" src="https://github.com/user-attachments/assets/770f82c5-a572-4a9d-a4d3-126afaeff89a" /> | <img width="240" src="https://github.com/user-attachments/assets/ca527032-6072-4120-8982-7940f7884e28" /> | <img width="240" src="https://github.com/user-attachments/assets/27d5f20a-f5ff-4cb9-ab24-2ade375c5556" /> | <img width="240" src="https://github.com/user-attachments/assets/b1398d7c-66ba-4cee-b9d0-4eb7db8849a5" /> |
 
 
 
-```
-fun getTargetTime(): LocalDateTime {  
-    // Set target to 2 minutes to test
-    return LocalDateTime.now().plusMinutes(2)  
-}
-```
+
 
 ### **📜 License**
 
@@ -90,7 +67,3 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 </br>
 
 <p align="center" font>Built by Arka Aceananda</p>
-
-<div>
-  <img style="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&section=footer&reversal=false&fontSize=70&fontColor=FFFFFF&fontAlign=50&fontAlignY=50&stroke=-&descSize=20&descAlign=50&descAlignY=50&color=gradient"  />
-</div>
