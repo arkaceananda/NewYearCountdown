@@ -47,23 +47,3 @@ com.example.newyear
 | Dark Mode | Light Mode | New Year (Dark) | New Year (Light) |
 |---------------------|-------------------|-------------------| ------------------- |
 | <img width="240" src="https://github.com/user-attachments/assets/770f82c5-a572-4a9d-a4d3-126afaeff89a" /> | <img width="240" src="https://github.com/user-attachments/assets/ca527032-6072-4120-8982-7940f7884e28" /> | <img width="240" src="https://github.com/user-attachments/assets/27d5f20a-f5ff-4cb9-ab24-2ade375c5556" /> | <img width="240" src="https://github.com/user-attachments/assets/b1398d7c-66ba-4cee-b9d0-4eb7db8849a5" /> |
-
-
-
-
-
-### **📜 License**
-
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/maurodesouza/profile-readme-generator?tab=readme-ov-file) file for details.
-
-<div align="center">
-  <img src="https://count.getloli.com/@:arkaceananda?theme=3d-num&padding=7&scale=1&align=top&pixelated=1&darkmode=auto"  />
-</div>
-
-</br>
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=arkaceananda&radius=16&theme=react&area=true&order=5" height="300" alt="activity-graph graph"  />
-</div>
-</br>
-
-<p align="center" font>Built by Arka Aceananda</p>
