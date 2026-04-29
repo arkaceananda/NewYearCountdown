@@ -1,4 +1,4 @@
-package com.example.newyear.ui.theme
+package com.example.newyear.ui.view
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -46,11 +46,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newyear.logic.CountdownCalculator
-import com.example.newyear.state.CountdownState
+import com.example.newyear.data.CountdownState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import androidx.core.graphics.createBitmap
+import com.example.newyear.ui.theme.FireworksAnimation
+import com.example.newyear.ui.theme.glassmorphism
+import java.time.LocalDateTime
 
 @Composable
 fun CountdownScreen(
@@ -97,7 +101,7 @@ fun CountdownScreen(
                     onScreenshot = {
                         coroutineScope.launch {
                             try {
-                                val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+                                val bitmap = createBitmap(view.width, view.height)
                                 val canvas = Canvas(bitmap)
                                 view.draw(canvas)
 
@@ -150,7 +154,7 @@ fun CountdownScreen(
             onClick = onToggleTheme,
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .padding(24.dp)
+                .padding(top = 42.dp, end = 24.dp)
                 .background(
                     color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
                     shape = CircleShape
@@ -247,7 +251,7 @@ fun NewYearCelebrationLayout(
 
 @Composable
 fun NewYearCelebrationText() {
-    val year = remember { java.time.LocalDateTime.now().year + 1 } // Assuming celebration is for the next year
+    val year = remember { LocalDateTime.now().year + 1 } // Assuming celebration is for the next year
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = "Selamat Tahun Baru",
@@ -274,7 +278,7 @@ fun CountdownDisplay(state: CountdownState, targetYear: Int) {
             modifier = Modifier.padding(bottom = 16.dp)
         )
         Row(
-            modifier = Modifier
+            modifier = Modifier.Companion
                 .glassmorphism()
                 .padding(horizontal = 32.dp, vertical = 24.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)

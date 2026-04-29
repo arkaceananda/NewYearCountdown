@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.newyear.state.CountdownState
+import com.example.newyear.data.CountdownState
 
 @Composable
 fun CountdownDisplay(
@@ -43,7 +43,6 @@ fun CountdownDisplay(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Days (Only if > 0)
             if (state.days > 0) {
                 TimeUnit(state.days, "DAYS", textColor)
                 Separator(textColor)
@@ -65,7 +64,7 @@ private fun TimeUnit(value: Long, label: String, color: Color, isBold: Boolean =
             style = MaterialTheme.typography.displayLarge.copy(
                 fontSize = 48.sp,
                 fontWeight = if (isBold) FontWeight.Bold else FontWeight.Medium,
-                fontFeatureSettings = "tnum" // Tabular numbers agar lebar angka tetap
+                fontFeatureSettings = "tnum"
             ),
             color = color
         )

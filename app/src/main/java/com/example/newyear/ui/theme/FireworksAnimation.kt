@@ -8,19 +8,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.IntSize
+import com.example.newyear.data.Particle
 import kotlinx.coroutines.isActive
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
 
-private data class Particle(
-    var x: Float, var y: Float,
-    var vx: Float, var vy: Float,
-    var alpha: Float,
-    val color: Color,
-    val size: Float
-)
 
 @Composable
 fun FireworksAnimation(
@@ -84,13 +78,11 @@ fun FireworksAnimation(
         }
     }
 
-    // The Canvas is now only responsible for drawing the current state of particles.
     Canvas(modifier = modifier
         .fillMaxSize()
         .onSizeChanged { newSize ->
-            canvasSize = newSize // Capture the canvas size to use in our animation logic
+            canvasSize = newSize
         }) {
-        // Draw each particle
         particles.forEach { p ->
             drawCircle(
                 color = p.color.copy(alpha = p.alpha.coerceIn(0f, 1f)),

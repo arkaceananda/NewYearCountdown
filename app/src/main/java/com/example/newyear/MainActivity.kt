@@ -9,7 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.newyear.ui.theme.CountdownTheme
-import com.example.newyear.ui.theme.CountdownScreen
+import com.example.newyear.ui.view.CountdownScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

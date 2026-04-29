@@ -1,6 +1,6 @@
 package com.example.newyear.logic
 
-import com.example.newyear.state.CountdownState
+import com.example.newyear.data.CountdownState
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Month
@@ -10,7 +10,7 @@ import java.util.Locale
 object CountdownCalculator {
 
     fun getTargetTime(): LocalDateTime {
-        // ganti untuk mengetes
+         // ganti untuk mengetes
         // return LocalDateTime.now().plusSeconds(15)
         val now = LocalDateTime.now()
         val currentYear = now.year
@@ -24,7 +24,7 @@ object CountdownCalculator {
         }
     }
 
-    fun getCurrentDisplay (): String {
+    fun formatter (): String {
         val now = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("EEEE, MMM dd yyyy", Locale.ENGLISH)
         return now.format(formatter)
@@ -44,7 +44,7 @@ object CountdownCalculator {
             minutes = duration.toMinutes() % 60,
             seconds = duration.toSeconds() % 60,
             isNewYear = false,
-            currentDateLabel = getCurrentDisplay()
+            currentDateLabel = formatter()
         )
     }
 }
