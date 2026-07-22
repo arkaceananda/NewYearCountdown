@@ -1,4 +1,4 @@
-package com.example.newyear
+package com.arka.newyear
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,8 +8,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.newyear.ui.theme.CountdownTheme
-import com.example.newyear.ui.view.CountdownScreen
+import com.arka.newyear.ui.theme.CountdownTheme
+import com.arka.newyear.ui.view.CountdownScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

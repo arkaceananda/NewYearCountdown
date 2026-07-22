@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.newyear"
+    namespace = "com.arka.newyear"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.newyear"
+        applicationId = "com.arka.newyear"
         minSdk = 36
         targetSdk = 36
         versionCode = 1

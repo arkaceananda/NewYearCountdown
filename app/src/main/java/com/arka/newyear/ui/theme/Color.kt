@@ -1,4 +1,4 @@
-package com.example.newyear.ui.theme
+package com.arka.newyear.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

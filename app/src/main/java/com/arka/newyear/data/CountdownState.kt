@@ -1,4 +1,4 @@
-package com.example.newyear.data
+package com.arka.newyear.data
 
 data class CountdownState(
     val days: Long = 0,

@@ -1,4 +1,4 @@
-package com.example.newyear.ui.view
+package com.arka.newyear.ui.view
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -49,8 +49,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.newyear.logic.CountdownViewModel
-import com.example.newyear.data.CountdownState
+import com.arka.newyear.logic.CountdownViewModel
+import com.arka.newyear.data.CountdownState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

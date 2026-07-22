@@ -1,4 +1,4 @@
-package com.example.newyear.ui.view
+package com.arka.newyear.ui.view
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,7 +8,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.IntSize
-import com.example.newyear.data.Particle
+import com.arka.newyear.data.Particle
 import kotlinx.coroutines.isActive
 import kotlin.math.PI
 import kotlin.math.cos

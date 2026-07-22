@@ -1,4 +1,4 @@
-package com.example.newyear.ui.view
+package com.arka.newyear.ui.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

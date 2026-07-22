@@ -1,4 +1,4 @@
-package com.example.newyear.ui.theme
+package com.arka.newyear.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

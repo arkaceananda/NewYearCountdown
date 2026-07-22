@@ -1,6 +1,6 @@
-package com.example.newyear.logic
+package com.arka.newyear.logic
 
-import com.example.newyear.data.CountdownState
+import com.arka.newyear.data.CountdownState
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Month

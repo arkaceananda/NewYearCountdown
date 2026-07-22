@@ -1,8 +1,8 @@
-package com.example.newyear.logic
+package com.arka.newyear.logic
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.newyear.data.CountdownState
+import com.arka.newyear.data.CountdownState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package com.example.newyear.data
+package com.arka.newyear.data
 
 import androidx.compose.ui.graphics.Color
 

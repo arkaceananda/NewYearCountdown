@@ -1,4 +1,4 @@
-package com.example.newyear
+package com.arka.newyear
 
 import org.junit.Test
 
