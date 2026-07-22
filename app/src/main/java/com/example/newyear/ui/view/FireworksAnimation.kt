@@ -1,4 +1,4 @@
-package com.example.newyear.ui.theme
+package com.example.newyear.ui.view
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +14,6 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
-
 
 @Composable
 fun FireworksAnimation(

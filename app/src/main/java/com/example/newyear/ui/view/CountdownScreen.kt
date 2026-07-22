@@ -45,40 +45,32 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.newyear.logic.CountdownCalculator
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Button
+import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.newyear.logic.CountdownViewModel
 import com.example.newyear.data.CountdownState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import androidx.core.graphics.createBitmap
-import com.example.newyear.ui.theme.FireworksAnimation
-import com.example.newyear.ui.theme.glassmorphism
 import java.time.LocalDateTime
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun CountdownScreen(
     isDarkTheme: Boolean,
-    onToggleTheme: () -> Unit
+    onToggleTheme: () -> Unit,
+    viewModel: CountdownViewModel = viewModel()
 ) {
-    var state by remember { mutableStateOf(CountdownState()) }
-    var targetTime by remember { mutableStateOf(CountdownCalculator.getTargetTime()) }
-    var isInCelebrationMode by remember { mutableStateOf(false) }
+    val state by viewModel.uiState.collectAsState()
+    val targetTime by viewModel.targetTime.collectAsState()
+    val isInCelebrationMode by viewModel.isInCelebrationMode.collectAsState()
     
     val view = LocalView.current
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
-
-    LaunchedEffect(targetTime) {
-        while (isActive && !isInCelebrationMode) {
-            val newState = CountdownCalculator.calculateRemaining(targetTime)
-            state = newState
-            if (newState.isNewYear) {
-                isInCelebrationMode = true
-            }
-            delay(1000L)
-        }
-    }
 
     Box(
         modifier = Modifier
@@ -95,8 +87,7 @@ fun CountdownScreen(
             if (inCelebration) {
                 NewYearCelebrationLayout(
                     onDismiss = {
-                        targetTime = CountdownCalculator.getTargetTime()
-                        isInCelebrationMode = false
+                        viewModel.resetToNextNewYear()
                     },
                     onScreenshot = {
                         coroutineScope.launch {
@@ -132,20 +123,47 @@ fun CountdownScreen(
                     }
                 )
             } else {
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    CountdownDisplay(state = state, targetYear = targetTime.year)
-                    Spacer(modifier = Modifier.height(24.dp))
-                    Text(
-                        text = state.currentDateLabel,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                        letterSpacing = 1.sp,
-                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
-                    )
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        CountdownDisplay(state = state, targetYear = targetTime.year)
+                        Spacer(modifier = Modifier.height(24.dp))
+                        Text(
+                            text = state.currentDateLabel,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Medium,
+                            letterSpacing = 1.sp,
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
+                        )
+                    }
+
+                    // Dev Tools at the bottom
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(bottom = 32.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "Developer Tools",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
+                        )
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)
+                        ) {
+                            Button(onClick = { viewModel.triggerCelebrationNow() }) {
+                                Text("Set to Now")
+                            }
+                            Button(onClick = { viewModel.resetToNextNewYear() }) {
+                                Text("Set to New Year")
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -179,9 +197,9 @@ fun NewYearCelebrationLayout(
     var showScreenshotButton by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        delay(4000)
+        delay(4000.milliseconds)
         showHintText = true
-        delay(500)
+        delay(500.milliseconds)
         showScreenshotButton = true
     }
 
@@ -278,7 +296,7 @@ fun CountdownDisplay(state: CountdownState, targetYear: Int) {
             modifier = Modifier.padding(bottom = 16.dp)
         )
         Row(
-            modifier = Modifier.Companion
+            modifier = Modifier
                 .glassmorphism()
                 .padding(horizontal = 32.dp, vertical = 24.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
